@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const path = require("path");
 const cookieParser = require("cookie-parser");
 const fileUploads = require("express-fileupload");
 const adminAuthRouter = require("./routers/adminAuthRouter");
@@ -12,10 +11,10 @@ const productCategoryRouter = require("./routers/product/categoryRouter");
 const productsRouter = require("./routers/product/productRouter");
 const sliderRouter = require("./routers/master/sliderRouter");
 const blogCategoryRouter = require("./routers/master/blogCategory");
-const blogRouter = require("./routers/blogRouter");
+const blogRouter = require("./routers/blog/blogRouter");
+const blogCommentsRouter = require("./routers/blog/blogCommentsRouter");
 
-dotenv.config({ path: path.join(__dirname, ".env") });
-
+dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUploads());
@@ -29,5 +28,6 @@ app.use("/api", productsRouter);
 app.use("/api", sliderRouter);
 app.use("/api", blogCategoryRouter);
 app.use("/api", blogRouter);
+app.use("/api", blogCommentsRouter);
 
 module.exports = app;

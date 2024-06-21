@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-const { kMaxLength } = require("buffer");
 
 const CredentialSchema = new mongoose.Schema({
   email: {

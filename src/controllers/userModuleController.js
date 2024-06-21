@@ -46,7 +46,7 @@ exports.listUser = async (req, res) => {
   try {
     const users = await userModuleSchema.find();
 
-    if (!users) {
+    if (users.length == 0) {
       res.status(404).json({
         status: false,
         message: "Users not found in DB",
@@ -114,7 +114,7 @@ exports.updatePassword = async (req, res) => {
     if (!user) {
       res.status(404).json({
         status: false,
-        message: `User not found ${req.params.id}`,
+        message: "User not found",
       });
     }
 
@@ -144,7 +144,7 @@ exports.deleteUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: false,
-        message: `user not found with this id ${req.params.id}`,
+        message: "user not found",
       });
     }
     res.status(200).json({

@@ -70,7 +70,7 @@ exports.listGeneralInfo = async (req, res) => {
   try {
     const data = await generalInfoSchema.find();
 
-    if (!data) {
+    if (data.length==0) {
       return res.status(404).json({
         status: false,
         message: "Data not found",
@@ -123,7 +123,7 @@ exports.updateGeneralInfo = async (req, res) => {
     if (!data) {
       return res.status(404).json({
         status: false,
-        message: `No data found with the provided ${req.params.id}`,
+        message: "No data found with the provided",
       });
     }
 

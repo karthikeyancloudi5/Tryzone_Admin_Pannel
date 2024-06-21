@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const databaseConnection = require("../config/database");
 const adminSignupData = require("../data/adminSignup.json");
 
-dotenv.config({ path: "backend/.env" });
+dotenv.config();
 databaseConnection();
 
 const adminCredentialSeeder = async () => {

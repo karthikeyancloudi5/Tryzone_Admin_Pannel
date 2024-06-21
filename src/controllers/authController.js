@@ -13,6 +13,7 @@ exports.login = async (req, res) => {
     const user = await adminAuthSchema
       .findOne({ $or: [{ email: identifire }, { mobileNumber: identifire }] })
       .select("+password");
+    console.log(user);
     if (!user) {
       return res.status(404).json({
         status: false,
@@ -125,7 +126,7 @@ exports.forgotPassword = async (req, res) => {
       user.resetPasswordTokenExpires = undefined;
       await user.save({ validateBeforeSave: false });
       console.log(error);
-      res.status(500).json({
+      res.status(400).json({
         status: false,
         message: "Email could not be sent",
       });
@@ -134,7 +135,7 @@ exports.forgotPassword = async (req, res) => {
     console.log("forgotPassword:", error);
     res.status(500).json({
       status: false,
-      message: "Something went wrong",
+      message: error.message,
     });
   }
 };
@@ -194,7 +195,7 @@ exports.resetPassword = async (req, res) => {
     console.log("resetPassword:", error);
     res.status(500).json({
       status: false,
-      message: "Something went wrong",
+      message: error.message,
     });
   }
 };
@@ -220,7 +221,7 @@ exports.getAdminDetails = async (req, res) => {
     console.log("getAdminDetails :", error);
     return res.status(500).json({
       status: false,
-      message: "invalid user",
+      message:error.message,
     });
   }
 };

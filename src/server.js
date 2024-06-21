@@ -2,7 +2,7 @@ const app = require("./app");
 const databaseConnection = require("./config/database");
 
 databaseConnection();
-
+ 
 app.listen(process.env.PORT, () => {
   try {
     console.log(

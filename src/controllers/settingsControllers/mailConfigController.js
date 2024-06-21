@@ -14,7 +14,7 @@ exports.createMailConfig = async (req, res) => {
   } = req.body;
 
   try {
-    const existingData = await emailConfigSchema.findOne({ websiteName });
+    const existingData = await emailConfigSchema.findOne({ mailHost });
 
     if (existingData) {
       return res.status(400).json({

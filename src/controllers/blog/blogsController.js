@@ -1,5 +1,5 @@
-const blogSchema = require("../model/blogModel");
-const blogCategorySchema = require("../model/masterModel/blogCategory");
+const blogSchema = require("../../model/blogModel/blogModel");
+const blogCategorySchema = require("../../model/masterModel/blogCategory");
 const path = require("path");
 
 exports.createBlog = async (req, res) => {
